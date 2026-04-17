@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plan de Trabajo · ART</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--n:#111;--g1:#2A2A2A;--g2:#4A4A4A;--g3:#707070;--g4:#A0A0A0;--g5:#D0D0D0;--g6:#EBEBEB;--g7:#F5F5F5;--w:#fff;--ln:#CECECE}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Source Sans 3',sans-serif;background:var(--g7);color:var(--n)}
+button{cursor:pointer;font-family:'Source Sans 3',sans-serif}
+input[type=file]{display:none}
+
+/* HEADER */
+.hdr{background:var(--n);height:60px;padding:0 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.hdr-l{display:flex;align-items:center;gap:10px}
+.hdr-logo{height:34px;filter:brightness(0) invert(1);opacity:.85;object-fit:contain}
+.hdr-dv{width:1px;height:28px;background:rgba(255,255,255,.2)}
+.hdr-t{color:#fff;font-family:'Merriweather',serif;font-size:.88rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.hdr-t small{display:block;font-family:'Source Sans 3',sans-serif;font-size:.48rem;letter-spacing:3px;opacity:.45;font-weight:400;margin-top:1px}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.hdr-u{font-size:.65rem;color:rgba(255,255,255,.5)}
+.btn-sal{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.65);padding:4px 10px;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* PANTALLAS */
+.pant{display:none}.pant.on{display:block}
+
+/* LOGIN */
+.login-w{min-height:calc(100vh - 60px);display:flex;align-items:center;justify-content:center;padding:20px 16px}
+.login-c{background:var(--w);border:1px solid var(--ln);width:100%;max-width:360px;overflow:hidden}
+.login-top{background:var(--n);padding:26px 22px 18px;text-align:center}
+.login-top h1{font-family:'Merriweather',serif;color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:3px}
+.login-top p{font-size:.58rem;color:rgba(255,255,255,.4);letter-spacing:3px;text-transform:uppercase}
+.login-b{padding:22px}
+.login-b>p{font-size:.7rem;color:var(--g3);text-align:center;margin-bottom:16px}
+.login-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.btn-login{padding:16px 8px;border:1.5px solid var(--ln);background:var(--g7);text-align:center;transition:all .15s}
+.btn-login:hover{background:var(--n);border-color:var(--n)}
+.btn-login:hover .bl-n,.btn-login:hover .bl-s{color:#fff}
+.bl-i{font-size:1.5rem;margin-bottom:6px}
+.bl-n{font-size:.72rem;font-weight:700;color:var(--n);letter-spacing:.04em;text-transform:uppercase}
+.bl-s{font-size:.58rem;color:var(--g3);margin-top:2px}
+
+/* CONTENIDO */
+.cnt{max-width:880px;margin:0 auto;padding:18px 14px 60px}
+
+/* STEPPER FUNC */
+.stepper{display:flex;background:var(--w);border:1px solid var(--ln);margin-bottom:16px}
+.stp{flex:1;padding:9px 4px;text-align:center;border-right:1px solid var(--ln);transition:all .2s}
+.stp:last-child{border-right:none}
+.stp-n{font-size:.52rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g4);display:block;margin-bottom:2px}
+.stp-l{font-size:.6rem;color:var(--g3);font-weight:600}
+.stp.on{background:var(--n)}.stp.on .stp-n,.stp.on .stp-l{color:rgba(255,255,255,.85)}
+.stp.done{background:var(--g6)}.stp.done .stp-l{color:var(--g3)}
+
+/* SECCIÓN */
+.sec{background:var(--w);border:1px solid var(--ln);margin-bottom:12px;overflow:hidden}
+.sec-h{background:var(--g6);padding:10px 16px;border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:8px}
+.sec-h h2{font-family:'Merriweather',serif;font-size:.8rem;font-weight:700;color:var(--n);text-transform:uppercase;letter-spacing:.02em}
+.sec-n{width:22px;height:22px;background:var(--n);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;flex-shrink:0}
+.sec-b{padding:16px}
+
+/* CAMPO */
+.f{margin-bottom:12px}
+.f label{display:block;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--g2);margin-bottom:4px;font-weight:700}
+.f input,.f textarea,.f select{width:100%;background:var(--w);border:1.5px solid var(--g5);color:var(--n);font-size:.8rem;padding:8px 10px;outline:none;font-family:'Source Sans 3',sans-serif;transition:border-color .15s}
+.f input:focus,.f textarea:focus,.f select:focus{border-color:var(--n)}
+.f textarea{min-height:90px;resize:vertical;line-height:1.6}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:520px){.f2,.f3{grid-template-columns:1fr}}
+
+/* MÓDULOS PASO 1 */
+.mod-grid{display:grid;gap:8px}
+.mod{border:1.5px solid var(--ln);overflow:hidden;transition:border-color .15s}
+.mod-h{padding:12px 14px;background:var(--g7);display:flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none;transition:background .15s}
+.mod-h:hover{background:var(--g6)}
+.mod-num{width:34px;height:34px;background:var(--n);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Merriweather',serif;font-size:.9rem;font-weight:700;flex-shrink:0}
+.mod-num.mec{font-size:.55rem;letter-spacing:1px}
+.mod-i{flex:1}
+.mod-t{font-size:.75rem;font-weight:700;color:var(--n);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px}
+.mod-d{font-size:.65rem;color:var(--g3);line-height:1.4}
+.mod-arr{color:var(--g4);font-size:.75rem;flex-shrink:0;transition:transform .2s;margin-top:4px}
+.mod.abierto .mod-arr{transform:rotate(180deg);color:var(--n)}
+.mod.abierto .mod-h{background:var(--n)}
+.mod.abierto .mod-t,.mod.abierto .mod-d{color:rgba(255,255,255,.85)}
+.mod.abierto .mod-arr{color:#fff}
+.mod-body{display:none;padding:14px;border-top:1px solid var(--ln)}
+.mod.abierto .mod-body{display:block}
+
+/* LÍNEAS */
+.lin-g{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.lin-b{padding:9px;border:1.5px solid var(--ln);background:var(--w);font-size:.67rem;font-weight:700;color:var(--g2);text-align:center;letter-spacing:.04em;text-transform:uppercase;transition:all .15s}
+.lin-b:hover,.lin-b.on{background:var(--n);border-color:var(--n);color:#fff}
+
+/* ESTADO */
+.est-g{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px}
+.est-b{padding:9px;border:1.5px solid var(--ln);background:var(--w);font-size:.67rem;font-weight:700;color:var(--g2);text-align:center;letter-spacing:.04em;text-transform:uppercase;transition:all .15s}
+.est-b:hover,.est-b.on{background:var(--n);border-color:var(--n);color:#fff}
+
+/* LISTA CONVENIOS EN MÓDULO */
+.conv-lista{border:1px solid var(--ln);overflow:hidden;margin-bottom:12px}
+.conv-lista-tit{background:var(--g6);padding:8px 12px;font-size:.56rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);border-bottom:1px solid var(--ln)}
+.conv-item{padding:10px 12px;border-bottom:1px solid var(--ln);cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.conv-item:last-child{border-bottom:none}
+.conv-item:hover{background:var(--g7)}
+.conv-item.sel{background:var(--n)}
+.conv-item-info{flex:1;min-width:0}
+.conv-item-no{font-size:.75rem;font-weight:700;color:var(--n);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv-item.sel .conv-item-no,.conv-item.sel .conv-item-det{color:#fff}
+.conv-item-det{font-size:.62rem;color:var(--g3);margin-top:1px}
+.conv-item-av{text-align:right;flex-shrink:0}
+.conv-item-avp{font-size:.7rem;font-weight:700;color:var(--n)}
+.conv-item.sel .conv-item-avp{color:#fff}
+.conv-item-avs{font-size:.55rem;color:var(--g4);letter-spacing:.05em}
+.conv-item.sel .conv-item-avs{color:rgba(255,255,255,.5)}
+
+/* ACTIVIDADES */
+.act{border:1px solid var(--ln);margin-bottom:7px;overflow:hidden}
+.act-h{background:var(--g6);padding:8px 12px;border-bottom:1px solid var(--ln)}
+.act-num{font-size:.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);margin-bottom:2px}
+.act-desc{font-size:.7rem;color:var(--g1);font-weight:600;line-height:1.3}
+.act-b{padding:11px;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+@media(max-width:520px){.act-b{grid-template-columns:1fr}}
+.act-f label{font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--g3);display:block;margin-bottom:3px;font-weight:700}
+.act-f textarea{width:100%;background:var(--g7);border:1px solid var(--g5);color:var(--n);font-size:.74rem;padding:7px 9px;outline:none;font-family:'Source Sans 3',sans-serif;line-height:1.5;resize:vertical;min-height:68px;transition:border-color .15s}
+.act-f textarea:focus{border-color:var(--n);background:var(--w)}
+.btn-anx{display:flex;align-items:center;gap:5px;background:var(--g7);border:1.5px dashed var(--g5);color:var(--g3);padding:6px 9px;font-size:.65rem;width:100%;justify-content:center;margin-top:5px;transition:all .15s;font-family:'Source Sans 3',sans-serif}
+.btn-anx:hover{border-color:var(--n);color:var(--n)}
+.anx-tag{display:inline-flex;align-items:center;gap:3px;background:var(--g6);border:1px solid var(--ln);padding:2px 6px;font-size:.58rem;color:var(--g2);margin:2px}
+.anx-tag button{background:none;border:none;color:var(--g4);font-size:.62rem;padding:0 0 0 2px}
+
+/* BOTONES */
+.btn-p{background:var(--n);color:#fff;border:none;padding:10px 24px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:opacity .15s}
+.btn-p:hover{opacity:.82}
+.btn-p:disabled{opacity:.45;cursor:not-allowed}
+.btn-s{background:var(--w);color:var(--g2);border:1.5px solid var(--ln);padding:9px 18px;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all .15s}
+.btn-s:hover{border-color:var(--n);color:var(--n)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;justify-content:flex-end}
+
+/* ADMIN */
+.adm-tabs{display:flex;background:var(--g7);border-bottom:1px solid var(--ln);margin:-16px -16px 16px;overflow-x:auto}
+.at{flex-shrink:0;padding:9px 12px;border:none;background:none;font-size:.56rem;font-weight:700;color:var(--g4);cursor:pointer;border-bottom:2px solid transparent;letter-spacing:.1em;text-transform:uppercase;transition:all .15s;font-family:'Source Sans 3',sans-serif}
+.at.on{color:var(--n);border-bottom-color:var(--n)}
+.ap{display:none}.ap.on{display:block}
+
+/* MATRIZ */
+.mtz-wrap{overflow-x:auto}
+.mtz{width:100%;border-collapse:collapse;font-size:.68rem}
+.mtz th{background:var(--n);color:#fff;padding:7px 9px;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;white-space:nowrap}
+.mtz td{padding:7px 9px;border-bottom:1px solid var(--ln);color:var(--n);vertical-align:top;line-height:1.4}
+.mtz tr:nth-child(even) td{background:var(--g7)}
+.avbar{background:var(--g5);height:5px;margin-top:3px}
+.avfill{background:var(--n);height:100%}
+.c-acts{display:flex;gap:3px}
+.bi{width:24px;height:24px;border:1px solid var(--ln);background:var(--w);cursor:pointer;font-size:.65rem;display:flex;align-items:center;justify-content:center}
+.bi:hover{background:var(--g6)}
+.bi.del{border-color:rgba(140,20,20,.3);color:#8c1414}
+
+/* INFORME */
+.inf-w{background:var(--w);border:1px solid var(--ln);padding:36px;max-width:820px;margin:0 auto}
+.inf-top{display:flex;align-items:flex-start;justify-content:space-between;padding-bottom:12px;border-bottom:2px solid var(--n);margin-bottom:20px}
+.inf-h1{font-family:'Merriweather',serif;font-size:1.1rem;font-weight:700;color:var(--n);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px}
+.inf-h1s{font-size:.58rem;color:var(--g3);letter-spacing:3px;text-transform:uppercase}
+.inf-ref{text-align:right;font-size:.58rem;color:var(--g3);letter-spacing:1.5px;text-transform:uppercase}
+.inf-sec{margin-bottom:18px}
+.inf-st{font-family:'Merriweather',serif;font-size:.76rem;font-weight:700;color:var(--n);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--g5);padding-bottom:5px;margin-bottom:10px}
+.inf-row{display:flex;gap:6px;margin-bottom:5px}
+.inf-rn{font-size:.6rem;font-weight:700;color:var(--g2);min-width:160px;flex-shrink:0;letter-spacing:.04em;text-transform:uppercase;padding-top:2px}
+.inf-rv{font-size:.74rem;color:var(--n);line-height:1.5;flex:1}
+.inf-blk{background:var(--g7);border:1px solid var(--ln);padding:12px 14px;margin-bottom:8px}
+.inf-bt{font-size:.56rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);margin-bottom:3px}
+.inf-bs{font-size:.63rem;font-weight:700;color:var(--g2);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+.inf-bx{font-size:.78rem;color:var(--n);line-height:1.7;white-space:pre-line}
+.inf-ai{margin-bottom:9px;padding-left:10px;border-left:2px solid var(--g5)}
+.inf-at{font-size:.6rem;font-weight:700;color:var(--g2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.inf-av{font-size:.76rem;color:var(--n);line-height:1.6}
+.inf-foot{margin-top:24px;padding-top:12px;border-top:1px solid var(--g5);text-align:center;font-size:.54rem;color:var(--g4);letter-spacing:2px;text-transform:uppercase}
+.pai-t{width:100%;border-collapse:collapse;font-size:.67rem;margin-bottom:12px}
+.pai-t th{background:var(--g1);color:#fff;padding:6px 8px;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.pai-t td{padding:6px 8px;border:1px solid var(--ln);color:var(--n);vertical-align:top;line-height:1.4}
+.pai-t tr:nth-child(even) td{background:var(--g7)}
+.spin{width:24px;height:24px;border:2px solid var(--g5);border-top-color:var(--n);border-radius:50%;animation:sp .7s linear infinite;margin:0 auto 10px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.inf-load{text-align:center;padding:36px 16px;color:var(--g3)}
+.inf-load p{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+
+/* REG */
+.reg-i{background:var(--g7);border:1px solid var(--ln);padding:10px 12px;margin-bottom:5px;cursor:pointer;transition:all .15s}
+.reg-i:hover{background:var(--g6);border-color:var(--n)}
+.reg-n{font-size:.76rem;font-weight:700;color:var(--n);text-transform:uppercase;letter-spacing:.03em}
+.reg-d{font-size:.6rem;color:var(--g3);margin-top:2px}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--n);color:#fff;font-size:.7rem;padding:8px 18px;opacity:0;transition:all .25s;z-index:500;pointer-events:none;white-space:nowrap;letter-spacing:.04em}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+.empty{text-align:center;padding:24px 16px;color:var(--g4)}
+.empty .ei{font-size:1.8rem;margin-bottom:7px}
+.empty p{font-size:.73rem;letter-spacing:.04em}
+
+/* PIN */
+.ov{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);align-items:flex-start;justify-content:center;overflow-y:auto;padding:14px}
+.ov.on{display:flex}
+.ov-b{background:var(--w);width:100%;max-width:380px;margin:auto;overflow:hidden}
+.ov-t{background:var(--n);padding:13px 16px;display:flex;align-items:center;justify-content:space-between}
+.ov-t h2{font-family:'Merriweather',serif;font-size:.85rem;color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.ov-x{background:rgba(255,255,255,.12);border:none;color:#fff;width:26px;height:26px;font-size:.85rem}
+.pin-b{padding:24px 20px}
+.pin-b h3{text-align:center;font-family:'Merriweather',serif;font-size:.9rem;font-weight:700;margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+.pin-b p{text-align:center;font-size:.65rem;color:var(--g3);margin-bottom:16px}
+.pins{display:flex;gap:8px;justify-content:center;margin-bottom:13px}
+.pin{width:48px;height:56px;background:var(--g7);border:1.5px solid var(--ln);text-align:center;font-size:1.3rem;font-weight:700;outline:none;font-family:'Source Sans 3',sans-serif;transition:border-color .15s}
+.pin:focus{border-color:var(--n);background:var(--w)}
+.pin-hint{text-align:center;font-size:.59rem;color:var(--g4);margin-top:6px}
+.btn-full{width:100%;padding:10px;background:var(--n);color:#fff;border:none;font-size:.74rem;font-weight:700;margin-top:4px;font-family:'Source Sans 3',sans-serif;letter-spacing:.08em;text-transform:uppercase}
+
+@media print{.hdr,.stepper,.btn-row,.btn-sal,.ov,.toast,.adm-tabs{display:none!important}.inf-w{border:none;padding:16px}body{background:#fff}}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-l">
+    <img class="hdr-logo" src="https://www.renovacionterritorio.gov.co/themes/custom/art/images/logo-art.png" onerror="this.style.display='none'" alt="ART">
+    <div class="hdr-dv"></div>
+    <div class="hdr-t">Plan de Trabajo<small>Agencia de Renovación del Territorio · PDET</small></div>
+  </div>
+  <div class="hdr-r">
+    <span class="hdr-u" id="hdr-u"></span>
+    <button class="btn-sal" onclick="salir()">← Salir</button>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div class="pant on" id="p-login">
+  <div class="login-w">
+    <div class="login-c">
+      <div class="login-top"><h1>Plan de Trabajo</h1><p>Agencia de Renovación del Territorio</p></div>
+      <div class="login-b">
+        <p>Seleccione su perfil de acceso</p>
+        <div class="login-grid">
+          <button class="btn-login" onclick="entrar('func')"><div class="bl-i">👤</div><div class="bl-n">Funcionario</div><div class="bl-s">Registro de actividades</div></button>
+          <button class="btn-login" onclick="aPin()"><div class="bl-i">⚙</div><div class="bl-n">Administrador</div><div class="bl-s">Gestión del sistema</div></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FUNCIONARIO -->
+<div class="pant" id="p-func">
+  <div class="cnt">
+    <div class="stepper">
+      <div class="stp on" id="stp1"><span class="stp-n">Paso 1</span><span class="stp-l">Módulos</span></div>
+      <div class="stp" id="stp2"><span class="stp-n">Paso 2</span><span class="stp-l">Actividades</span></div>
+      <div class="stp" id="stp3"><span class="stp-n">Paso 3</span><span class="stp-l">Informe</span></div>
+    </div>
+
+    <!-- PASO 1: 4 MÓDULOS -->
+    <div id="v1">
+      <div class="sec">
+        <div class="sec-h"><div class="sec-n">1</div><h2>Descripción de la Acción Estratégica</h2></div>
+        <div class="sec-b">
+          <p style="font-size:.7rem;color:var(--g3);margin-bottom:14px">Expanda cada módulo, seleccione la línea y el convenio correspondiente, luego diligencie la descripción.</p>
+          <div class="mod-grid">
+
+            <!-- MOD 6 -->
+            <div class="mod" id="mod6">
+              <div class="mod-h" onclick="toggleMod('mod6')">
+                <div class="mod-num">6</div>
+                <div class="mod-i">
+                  <div class="mod-t">Proyecto integrador transformador</div>
+                  <div class="mod-d">Un (1) proyecto integrador transformador con avances en estructuración, actualización o ejecución, según lo concertado con el nivel central.</div>
+                </div>
+                <div class="mod-arr">▼</div>
+              </div>
+              <div class="mod-body">
+                <div class="lin-g">
+                  <button class="lin-b" id="m6-inf" onclick="selLin(6,'Infraestructura')">Infraestructura</button>
+                  <button class="lin-b" id="m6-pro" onclick="selLin(6,'Productivo')">Productivo</button>
+                  <button class="lin-b" id="m6-viv" onclick="selLin(6,'Vivienda y Agua Potable')">Vivienda y Agua Potable</button>
+                  <button class="lin-b" id="m6-edu" onclick="selLin(6,'Educación')">Educación</button>
+                </div>
+                <div id="convs-mod6" style="display:none">
+                  <div class="conv-lista">
+                    <div class="conv-lista-tit">Seleccione el convenio</div>
+                    <div id="lista-convs-6"></div>
+                  </div>
+                </div>
+                <div class="f" id="gest-wrap-6" style="display:none">
+                  <label>Descripción de la acción estratégica</label>
+                  <textarea id="gest-6" placeholder="Describa las gestiones realizadas..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOD 7 -->
+            <div class="mod" id="mod7">
+              <div class="mod-h" onclick="toggleMod('mod7')">
+                <div class="mod-num">7</div>
+                <div class="mod-i">
+                  <div class="mod-t">Supervisión de contratos y convenios</div>
+                  <div class="mod-d">Realizar supervisión o apoyo a la supervisión de los contratos y convenios ejecutados en la Regional, de proyectos financiados por la ART.</div>
+                </div>
+                <div class="mod-arr">▼</div>
+              </div>
+              <div class="mod-body">
+                <div class="lin-g">
+                  <button class="lin-b" id="m7-inf" onclick="selLin(7,'Infraestructura')">Infraestructura</button>
+                  <button class="lin-b" id="m7-pro" onclick="selLin(7,'Productivo')">Productivo</button>
+                  <button class="lin-b" id="m7-viv" onclick="selLin(7,'Vivienda y Agua Potable')">Vivienda y Agua Potable</button>
+                  <button class="lin-b" id="m7-edu" onclick="selLin(7,'Educación')">Educación</button>
+                </div>
+                <div class="est-g" id="est-mod7" style="display:none">
+                  <button class="est-b" id="m7-ejec" onclick="selEst(7,'ejecucion')">En Ejecución</button>
+                  <button class="est-b" id="m7-liq" onclick="selEst(7,'liquidacion')">En Liquidación</button>
+                </div>
+                <div id="convs-mod7" style="display:none">
+                  <div class="conv-lista">
+                    <div class="conv-lista-tit">Seleccione el convenio</div>
+                    <div id="lista-convs-7"></div>
+                  </div>
+                </div>
+                <div class="f" id="gest-wrap-7" style="display:none">
+                  <label>Descripción de la acción estratégica</label>
+                  <textarea id="gest-7" placeholder="Describa las gestiones de supervisión..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOD 8 -->
+            <div class="mod" id="mod8">
+              <div class="mod-h" onclick="toggleMod('mod8')">
+                <div class="mod-num">8</div>
+                <div class="mod-i">
+                  <div class="mod-t">Solicitudes de estructuración y ejecución</div>
+                  <div class="mod-d">Responder las solicitudes de actualización, estructuración, ejecución, apoyo a la liquidación, gestión de financiamiento y/o acompañamiento a proyectos.</div>
+                </div>
+                <div class="mod-arr">▼</div>
+              </div>
+              <div class="mod-body">
+                <div class="lin-g">
+                  <button class="lin-b" id="m8-inf" onclick="selLin(8,'Infraestructura')">Infraestructura</button>
+                  <button class="lin-b" id="m8-pro" onclick="selLin(8,'Productivo')">Productivo</button>
+                  <button class="lin-b" id="m8-viv" onclick="selLin(8,'Vivienda y Agua Potable')">Vivienda y Agua Potable</button>
+                  <button class="lin-b" id="m8-edu" onclick="selLin(8,'Educación')">Educación</button>
+                </div>
+                <div class="est-g" id="est-mod8" style="display:none">
+                  <button class="est-b" id="m8-ejec" onclick="selEst(8,'ejecucion')">En Ejecución</button>
+                  <button class="est-b" id="m8-liq" onclick="selEst(8,'liquidacion')">En Liquidación</button>
+                </div>
+                <div id="convs-mod8" style="display:none">
+                  <div class="conv-lista">
+                    <div class="conv-lista-tit">Seleccione el convenio</div>
+                    <div id="lista-convs-8"></div>
+                  </div>
+                </div>
+                <div class="f" id="gest-wrap-8" style="display:none">
+                  <label>Descripción de la acción estratégica</label>
+                  <textarea id="gest-8" placeholder="Describa las gestiones de solicitudes..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- MOD MEC -->
+            <div class="mod" id="modmec">
+              <div class="mod-h" onclick="toggleMod('modmec')">
+                <div class="mod-num mec">MEC</div>
+                <div class="mod-i">
+                  <div class="mod-t">Estructuración proyectos étnicos MEC</div>
+                  <div class="mod-d">Estructuración de proyectos étnicos con enfoque diferencial en el marco del Mecanismo Especial de Consulta PDET.</div>
+                </div>
+                <div class="mod-arr">▼</div>
+              </div>
+              <div class="mod-body">
+                <div id="convs-modmec">
+                  <div class="conv-lista">
+                    <div class="conv-lista-tit">Seleccione el convenio</div>
+                    <div id="lista-convs-mec"></div>
+                  </div>
+                </div>
+                <div class="f" id="gest-wrap-mec" style="display:none">
+                  <label>Descripción de la acción estratégica</label>
+                  <textarea id="gest-mec" placeholder="Describa las gestiones de proyectos étnicos MEC..."></textarea>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="btn-row">
+            <button class="btn-p" onclick="irPaso(2)">Continuar a Actividades →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2: ACTIVIDADES -->
+    <div id="v2" style="display:none">
+      <div class="sec">
+        <div class="sec-h"><div class="sec-n">2</div><h2>Actividades realizadas</h2></div>
+        <div class="sec-b">
+          <p style="font-size:.7rem;color:var(--g3);margin-bottom:14px">Diligencie las actividades realizadas y anexe los documentos correspondientes.</p>
+          <div id="acts-container"></div>
+          <div class="btn-row">
+            <button class="btn-s" onclick="irPaso(1)">← Anterior</button>
+            <button class="btn-p" id="btn-gen" onclick="guardarYGenerar()">Generar Informe →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 3: INFORME -->
+    <div id="v3" style="display:none">
+      <div class="inf-w" id="inf-contenido">
+        <div class="inf-load"><div class="spin"></div><p>Generando informe ejecutivo...</p></div>
+      </div>
+      <div class="btn-row" style="max-width:820px;margin:12px auto 0">
+        <button class="btn-s" onclick="irPaso(2)">← Anterior</button>
+        <button class="btn-p" onclick="window.print()">🖨 Imprimir</button>
+        <button class="btn-p" onclick="nuevoReg()">+ Nuevo Registro</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ADMINISTRADOR -->
+<div class="pant" id="p-admin">
+  <div class="cnt">
+    <div class="sec">
+      <div class="sec-h"><div class="sec-n">⚙</div><h2>Administración · Plan de Trabajo ART</h2></div>
+      <div class="sec-b">
+        <div class="adm-tabs">
+          <button class="at on" onclick="aTab('ta-convs',this)">📋 Convenios</button>
+          <button class="at" onclick="aTab('ta-nuevo',this)">➕ Nuevo Convenio</button>
+          <button class="at" onclick="aTab('ta-regs',this)">📄 Registros</button>
+          <button class="at" onclick="aTab('ta-cfg',this)">⚙ Config</button>
+        </div>
+
+        <!-- LISTA CONVENIOS -->
+        <div id="ta-convs" class="ap on">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span style="font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3)">Matriz de Convenios</span>
+            <button class="btn-p" style="padding:6px 12px;font-size:.62rem" onclick="imprimirMatriz()">🖨 Imprimir Matriz</button>
+          </div>
+          <div class="mtz-wrap" id="mtz-wrap">
+            <div class="empty"><div class="ei">⏳</div><p>Cargando...</p></div>
+          </div>
+        </div>
+
+        <!-- NUEVO CONVENIO -->
+        <div id="ta-nuevo" class="ap">
+          <p style="font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g3);margin-bottom:14px" id="form-tit">Nuevo Convenio</p>
+          <input type="hidden" id="edit-id">
+          <div class="f2">
+            <div class="f"><label>No. Convenio *</label><input type="text" id="c-no" placeholder="Ej. 1348-2024"></div>
+            <div class="f"><label>Conveniente *</label><input type="text" id="c-conv" placeholder="Nombre del conveniente"></div>
+          </div>
+          <div class="f"><label>Objeto contractual *</label><textarea id="c-obj" placeholder="Descripción del objeto..." style="min-height:55px"></textarea></div>
+          <div class="f2">
+            <div class="f"><label>Línea</label>
+              <select id="c-lin">
+                <option value="">Seleccionar...</option>
+                <option>Infraestructura</option>
+                <option>Productivo</option>
+                <option>Vivienda y Agua Potable</option>
+                <option>Educación</option>
+              </select>
+            </div>
+            <div class="f"><label>Estado</label>
+              <select id="c-est">
+                <option value="ejecucion">En Ejecución</option>
+                <option value="liquidacion">En Liquidación</option>
+              </select>
+            </div>
+          </div>
+          <div class="f2">
+            <div class="f"><label>Fecha de suscripción</label><input type="date" id="c-fsus"></div>
+            <div class="f"><label>Duración</label><input type="text" id="c-dur" placeholder="Ej. 12 meses"></div>
+          </div>
+          <div class="f2">
+            <div class="f"><label>Fecha de inicio</label><input type="date" id="c-fini"></div>
+            <div class="f"><label>Fecha inicial de terminación</label><input type="date" id="c-fteri"></div>
+          </div>
+          <div class="f2">
+            <div class="f"><label>Prórroga realizada</label><input type="text" id="c-pror" placeholder="Sí / No"></div>
+            <div class="f"><label>Fecha final de terminación</label><input type="date" id="c-fterf"></div>
+          </div>
+          <div class="f3">
+            <div class="f"><label>Valor inicial ($)</label><input type="number" id="c-vini" placeholder="0"></div>
+            <div class="f"><label>Adición ($)</label><input type="number" id="c-adic" placeholder="0"></div>
+            <div class="f"><label>Liberaciones ($)</label><input type="number" id="c-lib" placeholder="0"></div>
+          </div>
+          <div class="f2">
+            <div class="f"><label>Valor final ($)</label><input type="number" id="c-vfin" placeholder="0"></div>
+            <div class="f"><label>Supervisor(a) *</label><input type="text" id="c-sup" placeholder="Nombre del supervisor"></div>
+          </div>
+          <div class="f2">
+            <div class="f"><label>Avance Financiero Real (%)</label><input type="number" id="c-avf" placeholder="0" min="0" max="100"></div>
+            <div class="f"><label>Avance Ejecución Real (%)</label><input type="number" id="c-ave" placeholder="0" min="0" max="100"></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <button class="btn-p" style="flex:1" onclick="guardarConv()">💾 Guardar Convenio</button>
+            <button class="btn-s" onclick="limpiarForm()">✕ Limpiar</button>
+          </div>
+        </div>
+
+        <!-- REGISTROS -->
+        <div id="ta-regs" class="ap">
+          <div id="lista-regs"></div>
+        </div>
+
+        <!-- CONFIG -->
+        <div id="ta-cfg" class="ap">
+          <div class="f"><label>Nombre de la Regional</label><input type="text" id="cfg-reg" placeholder="Ej. Regional Bajo Cauca, Norte y Nordeste Antioqueño"></div>
+          <div class="f"><label>Cambiar PIN (4 dígitos)</label><input type="password" id="cfg-pin" placeholder="Nuevo PIN" maxlength="4"></div>
+          <button class="btn-full" onclick="guardarCfg()">Guardar Configuración</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PIN -->
+<div class="ov" id="ov-pin">
+  <div class="ov-b">
+    <div class="ov-t"><h2>Acceso Administrador</h2><button class="ov-x" onclick="cOv('ov-pin')">✕</button></div>
+    <div class="pin-b">
+      <h3>Ingresa tu PIN</h3>
+      <p>Acceso restringido al panel de administración</p>
+      <div class="pins">
+        <input class="pin" type="password" maxlength="1" id="pi1" oninput="pn(this,'pi2')">
+        <input class="pin" type="password" maxlength="1" id="pi2" oninput="pn(this,'pi3')">
+        <input class="pin" type="password" maxlength="1" id="pi3" oninput="pn(this,'pi4')">
+        <input class="pin" type="password" maxlength="1" id="pi4" oninput="pn(this,null)">
+      </div>
+      <button class="btn-full" onclick="vPin()">Ingresar</button>
+      <p class="pin-hint">PIN por defecto: 1234</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── FIREBASE ──────────────────────────────────────────────────────────
+const FC={apiKey:"AIzaSyAU6mwuWyaCrJXt5gujy021rsBXAjuGBS0",authDomain:"plan-de-trabajo-art-2026.firebaseapp.com",projectId:"plan-de-trabajo-art-2026",storageBucket:"plan-de-trabajo-art-2026.firebasestorage.app",messagingSenderId:"680450259517",appId:"1:680450259517:web:0486b11ceb968994318854"};
+firebase.initializeApp(FC);
+const db=firebase.firestore(), sto=firebase.storage();
+const CC='pt_convenios', CR='pt_registros', CCF='pt_config';
+
+var CFG={pin:'1234',regional:'Regional ART'};
+var CONVS=[];
+var ANEXOS={};
+var MODS={
+  6:{lin:null,est:null,convId:null,conv:null},
+  7:{lin:null,est:null,convId:null,conv:null},
+  8:{lin:null,est:null,convId:null,conv:null},
+  mec:{lin:null,est:null,convId:null,conv:null}
+};
+var ACTS=[
+  {id:'a1',desc:'Informes de visitas técnicas a los proyectos intervenidos durante el período, con su respectivo registro fotográfico y listado de asistencia debidamente firmada.'},
+  {id:'a2',desc:'Actas de Comité de Control Social (CCSS).'},
+  {id:'a3',desc:'Ayudas de memoria de mesas de trabajo, reuniones de seguimiento y comités extraordinarios que se desarrollen en el marco de los diferentes convenios.'},
+  {id:'a4',desc:'Actas de comités operativos de los proyectos.'},
+  {id:'a5',desc:'Documentos técnicos de estructuración que no correspondan a proyectos asociados al MEC.'}
+];
+
+// ── INIT ──────────────────────────────────────────────────────────────
+function ini(){
+  db.collection(CCF).doc('global').get().then(function(s){
+    if(s.exists) CFG=Object.assign(CFG,s.data());
+  });
+  db.collection(CC).orderBy('fInicio','desc').onSnapshot(function(snap){
+    CONVS=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());});
+    renderMatriz();
+    // Cargar MEC siempre que haya convs
+    renderConvsLista('mec', null);
+  });
+}
+
+// ── SESIÓN ─────────────────────────────────────────────────────────────
+function entrar(rol){
+  document.getElementById('hdr-u').textContent=rol==='func'?'Funcionario':'Administrador';
+  mostrarPant(rol==='func'?'p-func':'p-admin');
+  if(rol==='func'){irPaso(1); renderConvsLista('mec',null);}
+  if(rol==='admin') cargarRegs();
+}
+function salir(){mostrarPant('p-login');document.getElementById('hdr-u').textContent='';resetD();}
+function mostrarPant(id){document.querySelectorAll('.pant').forEach(function(p){p.classList.remove('on');});document.getElementById(id).classList.add('on');}
+
+// ── STEPPER ────────────────────────────────────────────────────────────
+function irPaso(n){
+  document.querySelectorAll('.stp').forEach(function(s,i){s.classList.remove('on','done');if(i+1===n)s.classList.add('on');else if(i+1<n)s.classList.add('done');});
+  for(var i=1;i<=3;i++) document.getElementById('v'+i).style.display=i===n?'block':'none';
+  if(n===2) renderActs();
+  window.scrollTo(0,0);
+}
+
+// ── MÓDULOS ────────────────────────────────────────────────────────────
+function toggleMod(id){
+  document.getElementById(id).classList.toggle('abierto');
+}
+
+function selLin(m,l){
+  MODS[m].lin=l;
+  MODS[m].convId=null; MODS[m].conv=null;
+  // Resaltar botón línea
+  var map={Infraestructura:'inf',Productivo:'pro','Vivienda y Agua Potable':'viv','Educación':'edu'};
+  ['inf','pro','viv','edu'].forEach(function(k){
+    var b=document.getElementById('m'+m+'-'+k);
+    if(b) b.classList.remove('on');
+  });
+  var btn=document.getElementById('m'+m+'-'+map[l]);
+  if(btn) btn.classList.add('on');
+  // Mostrar estado si es mod 7 u 8
+  if(m===7||m===8){
+    var eg=document.getElementById('est-mod'+m);
+    if(eg) eg.style.display='grid';
+  }
+  // Mostrar lista de convenios filtrada
+  document.getElementById('convs-mod'+m).style.display='block';
+  document.getElementById('gest-wrap-'+m).style.display='none';
+  renderConvsLista(m, l);
+}
+
+function selEst(m,e){
+  MODS[m].est=e;
+  ['ejec','liq'].forEach(function(t){var b=document.getElementById('m'+m+'-'+t);if(b)b.classList.remove('on');});
+  var btn=document.getElementById('m'+m+'-'+(e==='ejecucion'?'ejec':'liq'));
+  if(btn) btn.classList.add('on');
+}
+
+function renderConvsLista(m, linea){
+  var contId='lista-convs-'+(m==='mec'?'mec':m);
+  var cont=document.getElementById(contId);
+  if(!cont) return;
+  var lista=linea ? CONVS.filter(function(c){return c.linea===linea;}) : CONVS;
+  if(!lista.length){
+    cont.innerHTML='<div style="padding:12px;font-size:.7rem;color:var(--g3);text-align:center">No hay convenios '+(linea?'de línea '+linea:'registrados')+'</div>';
+    return;
+  }
+  cont.innerHTML=lista.map(function(c){
+    return '<div class="conv-item" id="ci-'+m+'-'+c.id+'" onclick="selConvMod(\''+m+'\',\''+c.id+'\')">'
+      +'<div class="conv-item-info">'
+      +'<div class="conv-item-no">'+c.noConv+' · '+c.conveniente+'</div>'
+      +'<div class="conv-item-det">'+(c.objeto||'').substring(0,60)+'...</div>'
+      +'</div>'
+      +'<div class="conv-item-av">'
+      +'<div class="conv-item-avp">'+( c.avEjecucion||0)+'%</div>'
+      +'<div class="conv-item-avs">Ejec.</div>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+  // Mostrar contenedor
+  document.getElementById('convs-mod'+(m==='mec'?'mec':m)).style.display='block';
+}
+
+function selConvMod(m,cid){
+  var c=CONVS.find(function(x){return x.id===cid;});
+  if(!c) return;
+  MODS[m].convId=cid;
+  MODS[m].conv=c;
+  // Resaltar item
+  document.querySelectorAll('[id^="ci-'+m+'-"]').forEach(function(el){el.classList.remove('sel');});
+  var el=document.getElementById('ci-'+m+'-'+cid);
+  if(el) el.classList.add('sel');
+  // Mostrar campo descripción
+  document.getElementById('gest-wrap-'+m).style.display='block';
+  toast('Convenio '+c.noConv+' seleccionado ✓');
+}
+
+// ── ACTIVIDADES ────────────────────────────────────────────────────────
+function renderActs(){
+  var c=document.getElementById('acts-container');
+  c.innerHTML='';
+  ACTS.forEach(function(a,i){
+    var d=document.createElement('div');
+    d.className='act';
+    d.innerHTML='<div class="act-h"><div class="act-num">Actividad '+(i+1)+'</div><div class="act-desc">'+a.desc+'</div></div>'
+      +'<div class="act-b">'
+      +'<div class="act-f"><label>Actividades realizadas</label>'
+      +'<textarea id="at-'+a.id+'" placeholder="Describa las actividades realizadas..."></textarea></div>'
+      +'<div class="act-f"><label>Anexar documentos</label>'
+      +'<div id="anx-'+a.id+'"></div>'
+      +'<button class="btn-anx" onclick="document.getElementById(\'fi-'+a.id+'\').click()">📎 Anexar archivo</button>'
+      +'<input type="file" id="fi-'+a.id+'" accept=".pdf,.doc,.docx,.jpg,.png" onchange="subirAnexo(this,\''+a.id+'\')"></div>'
+      +'</div>';
+    c.appendChild(d);
+  });
+}
+
+function subirAnexo(inp,id){
+  var f=inp.files[0];if(!f)return;
+  toast('Subiendo archivo...');
+  sto.ref('pt_anx/'+Date.now()+'_'+f.name.replace(/\s/g,'_')).put(f)
+    .then(function(s){return s.ref.getDownloadURL();})
+    .then(function(url){
+      if(!ANEXOS[id])ANEXOS[id]=[];
+      ANEXOS[id].push({nom:f.name,url:url});
+      rAnexos(id);
+      toast('Archivo subido ✓');
+    }).catch(function(){toast('Error al subir');});
+}
+function rAnexos(id){
+  var c=document.getElementById('anx-'+id);if(!c)return;
+  c.innerHTML=(ANEXOS[id]||[]).map(function(a,i){
+    return '<span class="anx-tag">📄 '+a.nom+'<button onclick="ANEXOS[\''+id+'\'].splice('+i+',1);rAnexos(\''+id+'\')">✕</button></span>';
+  }).join('');
+}
+
+// ── GUARDAR Y GENERAR ──────────────────────────────────────────────────
+async function guardarYGenerar(){
+  var btn=document.getElementById('btn-gen');
+  btn.disabled=true; btn.textContent='⏳ Guardando...';
+  // Recolectar datos de módulos
+  var modsData={};
+  ['6','7','8','mec'].forEach(function(m){
+    var gest=document.getElementById('gest-'+m);
+    modsData[m]={
+      lin: MODS[m].lin,
+      est: MODS[m].est,
+      convId: MODS[m].convId,
+      conv: MODS[m].conv,
+      gest: gest?gest.value.trim():''
+    };
+  });
+  // Recolectar actividades
+  var acts={};
+  ACTS.forEach(function(a){
+    var t=document.getElementById('at-'+a.id);
+    acts[a.id]={desc:a.desc,txt:t?t.value.trim():'',anexos:ANEXOS[a.id]||[]};
+  });
+  var reg={
+    mods:modsData,
+    acts:acts,
+    ts:firebase.firestore.FieldValue.serverTimestamp(),
+    fecha:new Date().toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'}),
+    regional:CFG.regional
+  };
+  try{
+    // Guardar registro
+    var ref=await db.collection(CR).add(reg);
+    // Actualizar cada convenio con el último reporte
+    for(var m in modsData){
+      var md=modsData[m];
+      if(md.convId&&md.gest){
+        await db.collection(CC).doc(md.convId).update({
+          ['ultimoReporte_'+m]: {
+            gest:md.gest, lin:md.lin, est:md.est,
+            fecha:reg.fecha, regId:ref.id
+          }
+        });
+      }
+    }
+    toast('Registro guardado ✓');
+    irPaso(3);
+    await generarInforme(reg,ref.id);
+  }catch(e){
+    toast('Error: '+e.message);
+    console.error(e);
+  }
+  btn.disabled=false; btn.textContent='Generar Informe →';
+}
+
+// ── INFORME CON IA ─────────────────────────────────────────────────────
+async function generarInforme(reg,regId){
+  var mods=reg.mods;
+  var actsTxt=Object.values(reg.acts).map(function(a,i){
+    return(i+1)+'. '+a.desc+'\nRealizado: '+(a.txt||'Sin registrar');
+  }).join('\n\n');
+
+  function convInfo(m){
+    var c=mods[m]&&mods[m].conv;
+    if(!c) return 'Sin convenio seleccionado';
+    return 'Convenio '+c.noConv+' ('+c.conveniente+')\nObjeto: '+c.objeto+'\nAvance financiero: '+c.avFinanciero+'%\nAvance ejecución: '+c.avEjecucion+'%\nEstado: '+(mods[m].est==='liquidacion'?'En Liquidación':'En Ejecución')+'\nGestión reportada: '+(mods[m].gest||'Sin descripción');
+  }
+
+  var prompt='Eres el redactor institucional de la '+reg.regional+' de la Agencia de Renovación del Territorio (ART) de Colombia.\n\nGenera un INFORME EJECUTIVO MUY PROFESIONAL similar al documento "Avances Plan de Trabajo" de la ART.\n\nINFORMACIÓN POR NUMERAL:\n\nNUMERAL 6 - Proyecto integrador transformador:\n'+convInfo(6)+'\n\nNUMERAL 7 - Supervisión contratos y convenios:\n'+convInfo(7)+'\n\nNUMERAL 8 - Solicitudes:\n'+convInfo(8)+'\n\nNUMERAL 9 (MEC) - Proyectos étnicos:\n'+convInfo('mec')+'\n\nACTIVIDADES REALIZADAS:\n'+actsTxt+'\n\nESTRUCTURA REQUERIDA:\n1. PRESENTACIÓN: Párrafo institucional presentando el equipo, la regional '+reg.regional+' y el período de reporte. Menciona los 4 indicadores.\n\n2. NUMERAL 6: Párrafo profesional sobre el proyecto integrador, enfatizando avances reales.\n\n3. NUMERAL 7: Párrafos por cada convenio supervisado. Énfasis en avance financiero y de ejecución.\n\n4. NUMERAL 8: Párrafo sobre solicitudes atendidas, liquidaciones y acompañamiento.\n\n5. NUMERAL 9: Párrafo sobre proyectos étnicos en formulación y seguimiento.\n\nREQUISITOS OBLIGATORIOS:\n- Tono institucional muy formal como los informes oficiales ART\n- Sin asteriscos ni markdown, solo texto plano con saltos de línea\n- Párrafos bien redactados como el documento oficial\n- Fecha del reporte: '+reg.fecha;
+
+  var iaTexto=null;
+  try{
+    var r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2500,messages:[{role:'user',content:prompt}]})
+    });
+    var data=await r.json();
+    if(data.content&&data.content[0]) iaTexto=data.content[0].text;
+  }catch(e){console.error(e);}
+  renderInforme(reg,iaTexto,regId);
+}
+
+function renderInforme(reg,iaTexto,regId){
+  var fecha=reg.fecha||new Date().toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'});
+  var mods=reg.mods;
+
+  var h='<div class="inf-top">'
+    +'<div><div class="inf-h1">Avances Plan de Trabajo</div>'
+    +'<div class="inf-h1s">'+reg.regional+' · ART · PDET · '+fecha+'</div></div>'
+    +'<div class="inf-ref">Ref: '+regId.substring(0,8).toUpperCase()+'</div></div>';
+
+  // TABLA PAI
+  h+='<div class="inf-sec"><div class="inf-st">Indicadores Plan de Acción Institucional</div>'
+    +'<table class="pai-t"><thead><tr>'
+    +'<th>Indicador / Actividad PAI</th><th>Meta Regional</th>'
+    +'<th>Descripción Acción Estratégica</th><th>Meta</th>'
+    +'</tr></thead><tbody>'
+    +'<tr><td>Proyectos integradores estructurados para la transformación regional PDET</td><td>100%</td><td>Un (1) proyecto integrador transformador con avances en estructuración, actualización o ejecución.</td><td>4 informes</td></tr>'
+    +'<tr><td>Número de proyectos PDET implementados</td><td>100%</td><td>Supervisión o apoyo a la supervisión de contratos y convenios de proyectos financiados por la ART.</td><td>4 informes</td></tr>'
+    +'<tr><td>Número de proyectos PDET implementados</td><td>100%</td><td>Responder solicitudes de actualización, estructuración, ejecución, liquidación y acompañamiento.</td><td>4 informes</td></tr>'
+    +'<tr><td>Número de proyectos PDET implementados</td><td>4</td><td>Estructuración de proyectos étnicos MEC.</td><td>4 informes</td></tr>'
+    +'</tbody></table></div>';
+
+  // CONVENIOS REPORTADOS
+  h+='<div class="inf-sec"><div class="inf-st">Convenios Reportados</div>';
+  ['6','7','8','mec'].forEach(function(m){
+    var md=mods[m];
+    if(md&&md.conv){
+      var c=md.conv;
+      h+='<div class="inf-blk">'
+        +'<div class="inf-bt">Numeral '+(m==='mec'?'9 · MEC':m)+(md.lin?' · '+md.lin:'')+'</div>'
+        +'<div class="inf-row"><span class="inf-rn">No. Convenio</span><span class="inf-rv">'+c.noConv+'</span></div>'
+        +'<div class="inf-row"><span class="inf-rn">Conveniente</span><span class="inf-rv">'+c.conveniente+'</span></div>'
+        +'<div class="inf-row"><span class="inf-rn">Supervisor(a)</span><span class="inf-rv">'+(c.supervisor||'—')+'</span></div>'
+        +'<div class="inf-row"><span class="inf-rn">Av. Financiero Real</span><span class="inf-rv" style="font-weight:700">'+(c.avFinanciero||0)+'%</span></div>'
+        +'<div class="inf-row"><span class="inf-rn">Av. Ejecución Real</span><span class="inf-rv" style="font-weight:700">'+(c.avEjecucion||0)+'%</span></div>'
+        +(md.est?'<div class="inf-row"><span class="inf-rn">Estado</span><span class="inf-rv">'+(md.est==='liquidacion'?'En Proceso de Liquidación':'En Ejecución')+'</span></div>':'')
+        +'</div>';
+    }
+  });
+  h+='</div>';
+
+  // CUERPO IA
+  if(iaTexto){
+    h+='<div class="inf-sec"><div class="inf-st">Presentación y Avances por Numeral</div>';
+    var partes=iaTexto.split('\n\n').filter(function(p){return p.trim();});
+    partes.forEach(function(p){
+      var txt=p.trim();
+      var esT=txt.length<90&&(txt.startsWith('NUMERAL')||txt.startsWith('PRESENTACIÓN')||txt.startsWith('NUMERAL'));
+      if(esT){
+        h+='<div style="font-family:Merriweather,serif;font-size:.76rem;font-weight:700;color:var(--n);text-transform:uppercase;letter-spacing:.05em;margin:14px 0 6px;padding-top:10px;border-top:1px solid var(--g6)">'+txt+'</div>';
+      } else {
+        h+='<p style="font-size:.78rem;color:var(--n);line-height:1.7;margin-bottom:10px;white-space:pre-line">'+txt+'</p>';
+      }
+    });
+    h+='</div>';
+  } else {
+    // Fallback sin IA
+    h+='<div class="inf-sec"><div class="inf-st">Acciones Estratégicas</div>';
+    ['6','7','8','mec'].forEach(function(m){
+      var md=mods[m];
+      if(md&&md.gest){
+        h+='<div class="inf-blk"><div class="inf-bt">Numeral '+(m==='mec'?'9 · MEC':m)+'</div>'
+          +'<div class="inf-bx">'+md.gest+'</div></div>';
+      }
+    });
+    h+='</div>';
+  }
+
+  // ACTIVIDADES
+  var tieneActs=Object.values(reg.acts).some(function(a){return a.txt;});
+  if(tieneActs){
+    h+='<div class="inf-sec"><div class="inf-st">Actividades Realizadas</div>';
+    Object.values(reg.acts).forEach(function(a,i){
+      if(a.txt){
+        h+='<div class="inf-ai"><div class="inf-at">Actividad '+(i+1)+': '+a.desc.substring(0,55)+'...</div>'
+          +'<div class="inf-av">'+a.txt+'</div>'
+          +(a.anexos&&a.anexos.length?'<div style="margin-top:3px;font-size:.6rem;color:var(--g3)">Anexos: '+a.anexos.map(function(x){return x.nom;}).join(' · ')+'</div>':'')
+          +'</div>';
+      }
+    });
+    h+='</div>';
+  }
+
+  h+='<div class="inf-foot">'+reg.regional+' · Agencia de Renovación del Territorio · ART · PDET · '+fecha+' · Ref: '+regId.substring(0,8).toUpperCase()+'</div>';
+  document.getElementById('inf-contenido').innerHTML=h;
+}
+
+// ── ADMIN: CONVENIOS ───────────────────────────────────────────────────
+function guardarConv(){
+  var no=document.getElementById('c-no').value.trim();
+  var conv=document.getElementById('c-conv').value.trim();
+  var obj=document.getElementById('c-obj').value.trim();
+  var sup=document.getElementById('c-sup').value.trim();
+  if(!no||!conv||!obj||!sup){toast('Complete los campos obligatorios (*)');return;}
+  var data={
+    noConv:no,conveniente:conv,objeto:obj,
+    linea:document.getElementById('c-lin').value,
+    estado:document.getElementById('c-est').value,
+    fSuscripcion:document.getElementById('c-fsus').value,
+    duracion:document.getElementById('c-dur').value,
+    fInicio:document.getElementById('c-fini').value,
+    fTermIni:document.getElementById('c-fteri').value,
+    prorroga:document.getElementById('c-pror').value,
+    fTermFin:document.getElementById('c-fterf').value,
+    valInicial:document.getElementById('c-vini').value,
+    adicion:document.getElementById('c-adic').value,
+    liberaciones:document.getElementById('c-lib').value,
+    valFinal:document.getElementById('c-vfin').value,
+    supervisor:sup,
+    avFinanciero:document.getElementById('c-avf').value||0,
+    avEjecucion:document.getElementById('c-ave').value||0,
+    ts:firebase.firestore.FieldValue.serverTimestamp()
+  };
+  var eid=document.getElementById('edit-id').value;
+  toast('Guardando...');
+  var prom=eid?db.collection(CC).doc(eid).update(data):db.collection(CC).add(data);
+  prom.then(function(){
+    toast('Convenio guardado ✓');
+    limpiarForm();
+    aTab('ta-convs',document.querySelectorAll('.at')[0]);
+  }).catch(function(e){toast('Error: '+e.message);console.error(e);});
+}
+
+function limpiarForm(){
+  ['c-no','c-conv','c-obj','c-fsus','c-dur','c-fini','c-fteri','c-pror','c-fterf','c-vini','c-adic','c-lib','c-vfin','c-sup','c-avf','c-ave'].forEach(function(id){
+    var e=document.getElementById(id);if(e)e.value='';
+  });
+  document.getElementById('edit-id').value='';
+  document.getElementById('form-tit').textContent='Nuevo Convenio';
+  document.getElementById('c-est').value='ejecucion';
+  document.getElementById('c-lin').value='';
+}
+
+function editConv(id){
+  var c=CONVS.find(function(x){return x.id===id;});if(!c)return;
+  document.getElementById('edit-id').value=id;
+  document.getElementById('form-tit').textContent='Editar: '+c.noConv;
+  var m={'c-no':c.noConv,'c-conv':c.conveniente,'c-obj':c.objeto,'c-fsus':c.fSuscripcion,'c-dur':c.duracion,'c-fini':c.fInicio,'c-fteri':c.fTermIni,'c-pror':c.prorroga,'c-fterf':c.fTermFin,'c-vini':c.valInicial,'c-adic':c.adicion,'c-lib':c.liberaciones,'c-vfin':c.valFinal,'c-sup':c.supervisor,'c-avf':c.avFinanciero,'c-ave':c.avEjecucion};
+  Object.keys(m).forEach(function(k){var e=document.getElementById(k);if(e)e.value=m[k]||'';});
+  document.getElementById('c-lin').value=c.linea||'';
+  document.getElementById('c-est').value=c.estado||'ejecucion';
+  aTab('ta-nuevo',document.querySelectorAll('.at')[1]);
+  toast('Editando: '+c.noConv);
+}
+
+function elimConv(id){
+  if(!confirm('¿Eliminar este convenio?'))return;
+  db.collection(CC).doc(id).delete()
+    .then(function(){toast('Convenio eliminado');})
+    .catch(function(){toast('Error al eliminar');});
+}
+
+function renderMatriz(){
+  var w=document.getElementById('mtz-wrap');if(!w)return;
+  if(!CONVS.length){
+    w.innerHTML='<div class="empty"><div class="ei">📋</div><p>No hay convenios. Crea el primero en "Nuevo Convenio".</p></div>';
+    return;
+  }
+  var h='<table class="mtz"><thead><tr>'
+    +'<th>No. Convenio</th><th>Conveniente</th><th>Línea</th><th>Estado</th>'
+    +'<th>Supervisor</th><th>Av. Financiero</th><th>Av. Ejecución</th><th>Acciones</th>'
+    +'</tr></thead><tbody>';
+  CONVS.forEach(function(c){
+    h+='<tr>'
+      +'<td><strong>'+c.noConv+'</strong></td>'
+      +'<td>'+c.conveniente+'</td>'
+      +'<td>'+(c.linea||'—')+'</td>'
+      +'<td>'+(c.estado==='liquidacion'?'Liquidación':'Ejecución')+'</td>'
+      +'<td>'+(c.supervisor||'—')+'</td>'
+      +'<td><div>'+(c.avFinanciero||0)+'%</div><div class="avbar"><div class="avfill" style="width:'+Math.min(c.avFinanciero||0,100)+'%"></div></div></td>'
+      +'<td><div>'+(c.avEjecucion||0)+'%</div><div class="avbar"><div class="avfill" style="width:'+Math.min(c.avEjecucion||0,100)+'%"></div></div></td>'
+      +'<td><div class="c-acts">'
+      +'<button class="bi" onclick="editConv(\''+c.id+'\')" title="Editar">✏️</button>'
+      +'<button class="bi del" onclick="elimConv(\''+c.id+'\')" title="Eliminar">🗑</button>'
+      +'</div></td>'
+      +'</tr>';
+  });
+  h+='</tbody></table>';
+  w.innerHTML=h;
+}
+
+function imprimirMatriz(){
+  var h='<html><head><title>Matriz Convenios · ART</title>'
+    +'<style>body{font-family:Arial,sans-serif;font-size:10px;color:#111}h1{font-size:13px;text-transform:uppercase;letter-spacing:2px;margin-bottom:3px}p{font-size:9px;color:#666;margin-bottom:14px}table{width:100%;border-collapse:collapse}th{background:#111;color:#fff;padding:5px 7px;font-size:8px;letter-spacing:1px;text-transform:uppercase;text-align:left}td{padding:5px 7px;border-bottom:1px solid #ddd;vertical-align:top;font-size:9px}tr:nth-child(even) td{background:#f7f7f7}.bar{background:#ddd;height:4px;margin-top:2px}.fill{background:#111;height:100%}</style>'
+    +'</head><body>'
+    +'<h1>Matriz de Convenios · Plan de Trabajo ART</h1>'
+    +'<p>'+CFG.regional+' · '+new Date().toLocaleDateString('es-CO',{year:'numeric',month:'long',day:'numeric'})+'</p>'
+    +'<table><thead><tr><th>No. Convenio</th><th>Conveniente</th><th>Objeto</th><th>Línea</th><th>Estado</th><th>Supervisor</th><th>Av. Fin.</th><th>Av. Ejec.</th><th>Valor Final</th></tr></thead><tbody>';
+  CONVS.forEach(function(c){
+    h+='<tr><td><strong>'+c.noConv+'</strong></td><td>'+c.conveniente+'</td>'
+      +'<td>'+(c.objeto||'').substring(0,60)+'...</td>'
+      +'<td>'+(c.linea||'—')+'</td>'
+      +'<td>'+(c.estado==='liquidacion'?'Liquidación':'Ejecución')+'</td>'
+      +'<td>'+(c.supervisor||'—')+'</td>'
+      +'<td>'+(c.avFinanciero||0)+'%<div class="bar"><div class="fill" style="width:'+Math.min(c.avFinanciero||0,100)+'%"></div></div></td>'
+      +'<td>'+(c.avEjecucion||0)+'%<div class="bar"><div class="fill" style="width:'+Math.min(c.avEjecucion||0,100)+'%"></div></div></td>'
+      +'<td>$'+Number(c.valFinal||0).toLocaleString('es-CO')+'</td></tr>';
+  });
+  h+='</tbody></table></body></html>';
+  var w=window.open('','_blank');w.document.write(h);w.document.close();w.print();
+}
+
+// ── ADMIN: REGISTROS ───────────────────────────────────────────────────
+function cargarRegs(){
+  var el=document.getElementById('lista-regs');if(!el)return;
+  el.innerHTML='<div class="empty"><div class="ei">⏳</div><p>Cargando...</p></div>';
+  db.collection(CR).orderBy('ts','desc').limit(30).get().then(function(snap){
+    if(!snap.docs.length){
+      el.innerHTML='<div class="empty"><div class="ei">📄</div><p>No hay registros aún.</p></div>';
+      return;
+    }
+    el.innerHTML=snap.docs.map(function(d){
+      var r=d.data();
+      var convNom='';
+      if(r.mods){
+        for(var m in r.mods){if(r.mods[m]&&r.mods[m].conv){convNom=r.mods[m].conv.noConv;break;}}
+      }
+      return '<div class="reg-i"><div class="reg-n">'+(convNom||'Registro')+'</div>'
+        +'<div class="reg-d">'+(r.fecha||'Sin fecha')+' · '+(r.regional||'')+'</div></div>';
+    }).join('');
+  }).catch(function(){el.innerHTML='<div class="empty"><p>Error</p></div>';});
+}
+
+function guardarCfg(){
+  var reg=document.getElementById('cfg-reg').value.trim();
+  var np=document.getElementById('cfg-pin').value.trim();
+  if(reg) CFG.regional=reg;
+  if(np&&np.length===4) CFG.pin=np;
+  db.collection(CCF).doc('global').set(CFG).then(function(){
+    toast('Configuración guardada ✓');
+  }).catch(function(){toast('Error');});
+}
+
+// ── PIN ────────────────────────────────────────────────────────────────
+function aPin(){
+  ['pi1','pi2','pi3','pi4'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('ov-pin').classList.add('on');
+  setTimeout(function(){document.getElementById('pi1').focus();},300);
+}
+function pn(el,nx){if(el.value&&nx)document.getElementById(nx).focus();if(!nx&&el.value)vPin();}
+function vPin(){
+  var pin=['pi1','pi2','pi3','pi4'].map(function(id){return document.getElementById(id).value;}).join('');
+  if(pin===CFG.pin){
+    cOv('ov-pin');
+    entrar('admin');
+  } else {
+    toast('PIN incorrecto');
+    ['pi1','pi2','pi3','pi4'].forEach(function(id){document.getElementById(id).value='';});
+    document.getElementById('pi1').focus();
+  }
+}
+function cOv(id){document.getElementById(id).classList.remove('on');}
+function aTab(id,btn){
+  document.querySelectorAll('.ap').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.at').forEach(function(t){t.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+  if(id==='ta-regs') cargarRegs();
+}
+
+// ── UTILS ──────────────────────────────────────────────────────────────
+function resetD(){
+  MODS={6:{lin:null,est:null,convId:null,conv:null},7:{lin:null,est:null,convId:null,conv:null},8:{lin:null,est:null,convId:null,conv:null},mec:{lin:null,est:null,convId:null,conv:null}};
+  ANEXOS={};
+}
+function nuevoReg(){resetD();irPaso(1);}
+function toast(m){var t=document.getElementById('toast');t.textContent=m;t.className='toast on';setTimeout(function(){t.classList.remove('on');},2600);}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')cOv('ov-pin');});
+ini();
+</script>
+</body>
+</html>
